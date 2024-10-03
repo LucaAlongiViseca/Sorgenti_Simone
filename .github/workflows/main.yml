@@ -1,0 +1,31 @@
+name: cache
+on: workflow_dispatch
+jobs:
+  cache_demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get_code
+        uses: actions/checkout@v4
+      - name: cache_dependencies
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{runner.os}}-${{haschFiles(**/packagelock.json)}}
+      - name: install dependencies
+        run: npm ci
+  build:
+    need: cache-demo
+    run-on: ubuntu-latest
+    steps:
+      - name: getcode
+        uses: action/checkout@v4
+      - name: cache_dependencies
+        id: cache_step
+        uses: actions/cache@v4
+        with:
+          path: node_module
+          key: ${{runner.os}}-${{haschFiles('**/packages-lock.json')}}
+      - name: install_dependencies
+        if: ${{steps.cache_step.output.cache-hit!='true'}}
+        run: npm ci
+          
