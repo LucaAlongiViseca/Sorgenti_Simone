@@ -10,7 +10,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: node_modules
-          key: ${{runner.os}}-${{haschFiles(**/packagelock.json)}}
+          key: ${{runner.os}}-${{hashFiles('**/package-lock.json')}}
       - name: install dependencies
         run: npm ci
   build:
