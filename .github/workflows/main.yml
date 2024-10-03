@@ -4,7 +4,7 @@ jobs:
   cache_demo:
     runs-on: ubuntu-latest
     steps:
-      - name: get_code
+      - name: get code
         uses: actions/checkout@v4
       - name: cache_dependencies
         uses: actions/cache@v4
