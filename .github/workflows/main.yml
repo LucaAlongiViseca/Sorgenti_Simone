@@ -14,7 +14,7 @@ jobs:
       - name: install dependencies
         run: npm ci
   build:
-    need: cache-demo
+    needs: cache-demo
     run-on: ubuntu-latest
     steps:
       - name: getcode
