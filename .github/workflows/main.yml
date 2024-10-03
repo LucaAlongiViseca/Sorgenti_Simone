@@ -15,7 +15,7 @@ jobs:
         run: npm ci
   build:
     needs: cache-demo
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: getcode
         uses: action/checkout@v4
