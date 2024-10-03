@@ -24,7 +24,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: node_module
-          key: ${{runner.os}}-${{haschFiles('**/packages-lock.json')}}
+          key: ${{runner.os}}-${{hashFiles('**/packages-lock.json')}}
       - name: install_dependencies
         if: ${{steps.cache_step.output.cache-hit!='true'}}
         run: npm ci
